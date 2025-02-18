@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Penjualan </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Penjualan Banana Coklat Santri</h1>
+        <form id="salesForm">
+            <label for="product">Nama Pembeli:</label>
+            <input type="text" id="product" required>
+
+            <label for="quantity">Jumlah Terjual:</label>
+            <input type="number" id="quantity" required>
+
+            <label for="price">Harga Per Produk:</label>
+            <input type="number" id="price" required>
+
+            <button type="submit">Tambah Data Penjualan</button>
+        </form>
+
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Nama Pembeli</th>
+                    <th>Jumlah Terjual</th>
+                    <th>Harga Per Produk</th>
+                    <th>Total Pendapatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data penjualan akan muncul di sini -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <style>
+        /* Resetting some default styles */
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+    </style>
+</head>
+<body>
+
+<script>
+    document.getElementById('salesForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const product = document.getElementById('product').value;
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const price = parseInt(document.getElementById('price').value);
+    const total = quantity * price;
+
+    const table = document.getElementById('salesTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    const cellProduct = newRow.insertCell(0);
+    const cellQuantity = newRow.insertCell(1);
+    const cellPrice = newRow.insertCell(2);
+    const cellTotal = newRow.insertCell(3);
+
+    cellProduct.textContent = product;
+    cellQuantity.textContent = quantity;
+    cellPrice.textContent = price.toLocaleString();
+    cellTotal.textContent = total.toLocaleString();
+
+    document.getElementById('salesForm').reset();
+});
+
+</script>
